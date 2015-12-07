@@ -1,0 +1,21 @@
+<brs:ruleService name="OrderApproval" scope="Request"
+  targetNamespace="http://samples.chakray.com" xmlns:brs="http://wso2.org/carbon/rules">
+  <brs:ruleSet>
+    <brs:properties/>
+    <brs:rule
+      description="Prueba de tabla de decision con fichero Excel"
+      resourceType="dtable" sourceType="file">Orderapproval.xls</brs:rule>
+  </brs:ruleSet>
+  <brs:operation name="placeOrder">
+    <brs:input namespace="http://samples.chakray.com" wrapperElementName="placeOrder">
+      <brs:fact elementName="placeOrder"
+        namespace="http://samples.chakray.com" type="samples.chakray.com.PlaceOrder"/>
+    </brs:input>
+    <brs:output namespace="http://samples.chakray.com" wrapperElementName="placeOrderResponse">
+      <brs:fact elementName="orderAccept"
+        namespace="http://samples.chakray.com" type="samples.chakray.com.OrderAccept"/>
+      <brs:fact elementName="orderReject"
+        namespace="http://samples.chakray.com" type="samples.chakray.com.OrderReject"/>
+    </brs:output>
+  </brs:operation>
+</brs:ruleService>
